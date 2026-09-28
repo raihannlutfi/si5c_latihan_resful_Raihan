@@ -1,6 +1,22 @@
-const express = require('express');
-const app = express();
-const PORT = 3000;
+require('dotenv').config(); // baris pertama
+const express = require('express');//impore express
+const cors = require('cors'); //impor cors
+const app = express();//instalasi
+const PORT = process.env.PORT || 3000; //port yang akan digunakan
+
+function logger(req, res, next) {
+  const waktu = new Date().toISOString();
+  console.log(`[${waktu}] ${req.method} ${req.url}`);
+  next(); // wajib, agar request lanjut ke handler berikutnya
+}
+
+// Didaftarkan sebelum route agar mencatat seluruh request
+app.use(logger);
+//cors didaftarkan
+app.use(cors({
+  origin: process.env.CORS_ORIGIN,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
 app.get('/', (req, res) => {
     res.send('Server Express.js berjalan!');
