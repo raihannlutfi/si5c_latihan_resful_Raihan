@@ -19,5 +19,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raihannlutfi/si5c_latihan_resful_Raihan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raihannlutfi/si5c_latihan_resful_Raihan/issues"
+  },
+  "homepage": "https://github.com/raihannlutfi/si5c_latihan_resful_Raihan#readme"
 }
