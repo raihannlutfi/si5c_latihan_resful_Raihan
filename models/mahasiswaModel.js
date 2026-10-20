@@ -19,7 +19,15 @@
 
 const mongoose = require('mongoose');
 
+const alamatSchema = new mongoose.Schema({
+  prodiId: { type: mongoose.Schema.Types.ObjectId, ref: 'Prodi' },
+  jalan: String,
+  kota: String,
+}, { _id: false });
+
+
 const mahasiswaSchema = new mongoose.Schema({
+  createdAt: { type: Date, default: Date.now },
   nama: {
     type: String,
     required: [true, 'nama wajib diisi'],
@@ -35,6 +43,10 @@ const mahasiswaSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Prodi',
     required: true
+  },
+  alamat: {
+    type: alamatSchema,
+    default: () => ({})
   },
   createdAt: {
     type: Date,
